@@ -1,12 +1,12 @@
 package com.social.network.domain;
 
+import com.social.network.domain.userAccount.User;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="user_wall_post")
 public class WallPost {
 
     @Id
