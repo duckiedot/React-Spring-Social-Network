@@ -11,12 +11,13 @@ const LoginComponent = () => {
     const submitForm = (e) => {
         e.preventDefault()
         const requestBody = new FormData(loginForm.current)
+        console.log(requestBody.get("username"));
         fetch("api/auth/login", {
             "headers": {
                 "Content-Type": "application/json"
             },
             "method": "post",
-            body: JSON.stringify(requestBody)
+            body: JSON.stringify(Object.fromEntries(requestBody))
         }).then((response) => Promise.all([response.json(), response.headers]))
             .then(([body, headers]) => {
                 setJwt(headers.get("authorization"));
@@ -33,11 +34,11 @@ const LoginComponent = () => {
 
     return (
         <>
-            <form>
+            <form ref={loginForm} onSubmit={submitForm}>
                 <h1>Sign in</h1>
                 <div>
-                    <input type="text" style={AuthStyle.loginInputStyle} placeholder="Username"/>
-                    <input type="password" style={AuthStyle.loginInputStyle} placeholder="Password"/>
+                    <input type="text" name="username" style={AuthStyle.loginInputStyle} placeholder="Username"/>
+                    <input type="password" name="password" style={AuthStyle.loginInputStyle} placeholder="Password"/>
                 </div>
                 <button type="submit" style={AuthStyle.loginButtonStyle}>Log In</button>
             </form>
