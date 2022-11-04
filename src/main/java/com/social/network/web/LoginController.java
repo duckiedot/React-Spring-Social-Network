@@ -24,6 +24,7 @@ public class LoginController {
 
     private final JwtUtil jwtUtil;
 
+
     @Autowired
     public LoginController(AuthenticationManager authenticationManager, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;

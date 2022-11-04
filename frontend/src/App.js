@@ -1,8 +1,13 @@
 import './App.css';
 import {useEffect, useState} from "react";
 import {useLocalState} from "./util/useLocalStorage";
+import {Route, Routes} from "react-router-dom";
+import AuthComponent from "./authComponents";
 
 function App() {
+
+    const homePath = "/"
+    const loginPath = "login/"
 
     const [jwt, setJwt] = useLocalState("", "jwt");
 
@@ -28,9 +33,9 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
-            {jwt}
-        </div>
+        <Routes>
+            <Route path={loginPath} element={<AuthComponent/>} />
+        </Routes>
     );
 }
 
