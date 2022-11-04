@@ -12,7 +12,7 @@ const LoginComponent = () => {
     }
 
     return (
-        <div>
+        <>
             <form>
                 <h1>Sign in</h1>
                 <div>
@@ -23,7 +23,7 @@ const LoginComponent = () => {
             </form>
             <h2 style={AuthStyle.registerPrompts}>don't have an account?</h2>
             <h4 onClick={handleClick} style={AuthStyle.registerPrompts}>Click To <span style={AuthStyle.greenText}>Register Now</span></h4>
-        </div>
+        </>
     );
 };
 

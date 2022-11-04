@@ -25,7 +25,7 @@ const RegisterComponent = () => {
 
 
     return (
-        <div>
+        <>
             <h2 style={registerStyle}>Register</h2>
             <div style={AuthStyle.registerStyle}>
                 <form ref={registerForm} onSubmit={submitForm}>
@@ -44,7 +44,7 @@ const RegisterComponent = () => {
                     <button type="submit" style={AuthStyle.registerButtonStyle}>Register</button>
                 </form>
             </div>
-        </div>
+        </>
     );
 };
 

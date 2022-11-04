@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import {useLocalState} from "./util/useLocalStorage";
 import {Route, Routes} from "react-router-dom";
 import AuthComponent from "./authComponents";
+import PrivateRotue from "./PrivateRoute";
+import Wall from "./Wall";
 
 function App() {
 
@@ -34,7 +36,15 @@ function App() {
 
     return (
         <Routes>
-            <Route path={loginPath} element={<AuthComponent/>} />
+            <Route
+                path={homePath}
+                element={
+                    <PrivateRotue>
+                        <Wall/>
+                    </PrivateRotue>
+                }
+            />
+            <Route path={loginPath} element={<AuthComponent/>}/>
         </Routes>
     );
 }
