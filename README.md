@@ -16,3 +16,9 @@ Create a social network aplication with Java/Spring backend and React frontend. 
 - TBA
  # API collection: 
 - Downloand this postman collection - > TBA
+
+# Login Page
+![image](https://user-images.githubusercontent.com/77971310/200204523-d2bb57c4-c86c-4f9f-b5a5-12249c934a77.png)
+
+- clicking register scrolls down with animation to open registration form
+![image](https://user-images.githubusercontent.com/77971310/200204576-5983ae15-b676-4e42-8744-e66668263dbb.png)
