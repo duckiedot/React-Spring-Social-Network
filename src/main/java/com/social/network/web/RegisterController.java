@@ -1,11 +1,9 @@
 package com.social.network.web;
 
-import com.social.network.domain.userAccount.User;
-import com.social.network.repository.UserRepository;
-import com.social.network.util.CustomPasswordEncoder;
+import com.social.network.dto.RegisterRequest;
+import com.social.network.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,24 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 public class RegisterController {
 
-    private UserRepository userRepository;
-
-    private PasswordEncoder passwordEncoder;
+    private final RegisterService registerService;
 
     @Autowired
-    public RegisterController(UserRepository userRepository, CustomPasswordEncoder customPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = customPasswordEncoder.getPasswordEncoder();
+    public RegisterController(RegisterService registerService) {
+        this.registerService = registerService;
     }
 
     @PostMapping("register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
-        try {
-            this.userRepository.save(user);
-
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest newUserRequest) {
+        boolean userRegistered = this.registerService.registerUser(newUserRequest);
+        if (userRegistered) {
             return ResponseEntity.ok().build();
-        } catch (Exception exception) {
-            return ResponseEntity.badRequest().body(exception);
         }
+        return ResponseEntity.badRequest().build();
     }
 }
