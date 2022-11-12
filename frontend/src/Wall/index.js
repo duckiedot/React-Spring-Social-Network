@@ -1,10 +1,12 @@
 import React from 'react';
+import CreateWallPost from "./CreateWallPost";
 
 const Wall = () => {
+
     return (
-        <div>
-            
-        </div>
+        <>
+            <CreateWallPost/>
+        </>
     );
 };
 
