@@ -15,7 +15,7 @@ public class Authority implements GrantedAuthority {
     protected Long id;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "authRoles")
+    @ManyToMany(mappedBy = "authRoles", fetch = FetchType.EAGER)
     protected Set<User> users = new HashSet<>();
 
     @Column
