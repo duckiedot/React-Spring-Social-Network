@@ -21,6 +21,7 @@ const LoginComponent = () => {
         }).then((response) => Promise.all([response.json(), response.headers]))
             .then(([body, headers]) => {
                 setJwt(headers.get("authorization"));
+                window.location.href = "/"
             })
     }
 
