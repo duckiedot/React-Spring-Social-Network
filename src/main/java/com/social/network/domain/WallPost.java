@@ -1,12 +1,16 @@
 package com.social.network.domain;
 
 import com.social.network.domain.userAccount.User;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 public class WallPost {
 
     @Id
@@ -26,44 +30,4 @@ public class WallPost {
     @CreationTimestamp
     @Column(nullable = false)
     private Date createdAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getWallPostName() {
-        return wallPostName;
-    }
-
-    public void setWallPostName(String wallPostName) {
-        this.wallPostName = wallPostName;
-    }
-
-    public String getWallPostBody() {
-        return wallPostBody;
-    }
-
-    public void setWallPostBody(String wallPostBody) {
-        this.wallPostBody = wallPostBody;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
 }
