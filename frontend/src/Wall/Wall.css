@@ -1,0 +1,21 @@
+.wall {
+    height: 100%;
+    display: flex;
+    justify-content: center
+}
+
+.wall-posts {
+    width: 65%;
+}
+
+@media (max-width: 800px) {
+    .wall-posts {
+        width: 80%;
+    }
+}
+
+@media (max-width: 500px) {
+    .wall-posts {
+        width: 95%;
+    }
+}

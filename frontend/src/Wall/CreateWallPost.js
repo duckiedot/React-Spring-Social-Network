@@ -1,5 +1,6 @@
 import React from 'react';
 import {useLocalState} from "../util/useLocalStorage";
+import WallStyle from "./style";
 
 const CreateWallPost = () => {
 
@@ -21,7 +22,10 @@ const CreateWallPost = () => {
 
     return (
         <>
-            <button onClick={() => createWallPost()}>Write Post</button>
+            <button style={WallStyle.createPostStyle}
+                    onClick={() => createWallPost()}>
+                Write a new <span style={{color: WallStyle.gradientColor}}>Post</span>
+            </button>
         </>
     );
 };

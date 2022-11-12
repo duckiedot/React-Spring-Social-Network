@@ -1,0 +1,39 @@
+.create-input {
+    border: none;
+    background-color: #dedede;
+    font-size: 2em;
+    padding: 0.2em;
+}
+
+.inputs {
+    margin-top: 0.6em;
+    margin-bottom: 2.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-post-title {
+    width: 45%;
+    border-radius: 20px 110px 0 0;
+    border-bottom: 2px solid #cecece;
+    padding-left: 0.6em;
+}
+
+.new-post-body {
+    border-radius: 0 25px 25px 25px;
+    padding-left: 0.6em;
+}
+
+.new-post-submit {
+    width: 25%;
+    color: white;
+    font-family: Roboto, serif;
+    border-radius: 0 0 50px 130px;
+    margin-left: 60%;
+    font-size: 0.9em;
+    background: linear-gradient(90deg, rgba(8, 174, 234, 1) 45%, rgba(42, 245, 152, 1) 100%);
+}
+
+.post-creator > h1 {
+    margin-bottom: 0.2em;
+}
