@@ -1,10 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {useLocalState} from "../../util/useLocalStorage";
+import React from 'react';
 import PostComponent from "./PostComponent";
 
 const RenderPostsComponent = ({wallPosts}) => {
-
-    console.log(wallPosts)
 
     return (
         <>

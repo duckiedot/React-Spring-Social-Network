@@ -2,14 +2,18 @@ package com.social.network.web;
 
 import com.social.network.domain.WallPost;
 import com.social.network.domain.userAccount.User;
+import com.social.network.domain.userAccount.roles.RegisteredUser;
+import com.social.network.dto.WallPostRequest;
 import com.social.network.service.WallPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.security.RolesAllowed;
 
 @RestController
 @RequestMapping("/api/wall")
@@ -23,10 +27,11 @@ public class WallPostController {
     }
 
     @PostMapping("create")
-    public ResponseEntity<?> createWallPost (@AuthenticationPrincipal User user) {
-        WallPost wallPost = wallPostService.createPost(user);
+    public ResponseEntity<?> createWallPost (@RequestBody WallPostRequest wallPostRequest) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WallPost wallPost = wallPostService.createPost(wallPostRequest, (User) authentication.getPrincipal());
 
-        return ResponseEntity.ok(wallPost);
+        return ResponseEntity.ok(wallPost.getId());
     }
 
     @GetMapping("load/all")

@@ -8,7 +8,7 @@ const Wall = () => {
 
     const [jwt, setJwt] = useLocalState("", "jwt")
     const [wallPosts, setWallPosts] = useState(null);
-    const [newPosts, setNewPosts] = useState(true)
+    const [newPosts, setNewPosts] = useState(null)
 
     useEffect(() => {
         fetch("api/wall/load/all", {

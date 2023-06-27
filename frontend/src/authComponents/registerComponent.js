@@ -12,6 +12,7 @@ const RegisterComponent = () => {
     const submitForm = (e) => {
         e.preventDefault()
         let data = new FormData(registerForm.current)
+        console.log(data)
         axios({
             method: "post",
             url: "api/auth/register",

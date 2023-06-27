@@ -2,6 +2,7 @@ package com.social.network.service;
 
 import com.social.network.domain.WallPost;
 import com.social.network.domain.userAccount.User;
+import com.social.network.dto.WallPostRequest;
 import com.social.network.repository.WallPostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -20,9 +21,12 @@ public class WallPostService {
     }
 
     //Returns new wall post
-    public WallPost createPost(User user) {
+    public WallPost createPost(WallPostRequest wallPostRequest, User user) {
         WallPost wallPost = new WallPost();
+
         wallPost.setUser(user);
+        wallPost.setWallPostName(wallPostRequest.getWallPostName());
+        wallPost.setWallPostBody(wallPostRequest.getWallPostBody());
 
         return this.wallPostRepository.save(wallPost);
     }

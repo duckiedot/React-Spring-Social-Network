@@ -1,14 +1,21 @@
 function createPost(postData, jwt) {
-    fetch("api/wall/create", {
+
+    let requestResponse;
+
+        let aa = fetch("api/wall/create", {
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${jwt}`
+            Authorization: `Bearer ${jwt}`,
         },
-        method: "POST",
-        body: postData
-    }).then((response) => {
-        if (response.status === 200) {}
-    })
+        method: "post",
+        body: JSON.stringify(Object.fromEntries(postData))
+    }).then((response) => Promise.all([response.json(), response.headers]))
+        .then(([body, headers]) => {
+            return headers
+        }
+    )
+    console.log(aa)
+    return requestResponse;
 }
 
 export {createPost}
