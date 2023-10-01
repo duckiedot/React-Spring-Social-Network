@@ -1,18 +1,15 @@
-version: "3"
+version: "3.9"
 services:
-  mysql:
-    image: mysql:8
+  postgresql:
+    image: postgres:13
     ports:
-      - 3306:3306
-    expose:
-      - 3306
+      - 5432:5432
     volumes:
-      - ~/apps/mysql:/var/lib/mysql
+      - ~/apps/postgresql:/var/lib/postgresql/data
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
-      - MYSQL_PASSWORD=123456
-      - MYSQL_USER=social_network_app
-      - MYSQL_DATABASE=social_network
+      - POSTGRES_USER=social_network_app
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=social_network
   springboot-app:
     container_name: social-network-app
     image: springboot-app
@@ -22,4 +19,4 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - mysql
+      - postgresql
