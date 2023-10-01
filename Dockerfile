@@ -1,10 +1,12 @@
-FROM openjdk:17-alpine
+FROM --platform=$BUILDPLATFORM golang:alpine AS build
 
-# Install Gradle
+RUN apk update && apk add openjdk17 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 RUN apk add --no-cache unzip
+
 ENV GRADLE_VERSION 7.3
 ENV GRADLE_HOME /opt/gradle
 ENV PATH=$PATH:$GRADLE_HOME/bin
+
 WORKDIR /opt
 RUN wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip \
    && unzip -q gradle-$GRADLE_VERSION-bin.zip \
@@ -12,7 +14,7 @@ RUN wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin
    && rm gradle-$GRADLE_VERSION-bin.zip
 
 # Copy the project files
-WORKDIR .
+WORKDIR /app
 COPY build.gradle .
 COPY src ./src
 
